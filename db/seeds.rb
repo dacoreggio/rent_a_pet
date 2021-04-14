@@ -16,27 +16,154 @@ addresses = [
             "Platz der Luftbrücke 5, 12101 Berlin, Germany",
             "Klosterstraße 62, 10179 Berlin, Germany",
             "Schönhauser Allee 180, 10119 Berlin, Germany",
-            "Saarbrücker Str. 37a, 10405 Berlin, Germany"
+            "Saarbrücker Str. 37a, 10405 Berlin, Germany",
+            "Turmstraße 25, 10559 Berlin, Germany"
 ]
-c = 0
 
 puts "Cleaning database..."
 Pet.destroy_all
+User.destroy_all
+
+puts "Creating users..."
+User.create(email: 'federico@test.com', password: '123456', first_name: 'Federico', last_name: 'Valenza')
+User.create(email: 'christina@test.com', password: '123456', first_name: 'Christina', last_name: 'Koufopoulou')
+User.create(email: 'ilaria@test.com', password: '123456', first_name: 'Ilaria', last_name: 'Valenza')
+User.create(email: 'john@test.com', password: '123456', first_name: 'John', last_name: 'McEnroe')
+User.create(email: 'maria@test.com', password: '123456', first_name: 'Maria', last_name: 'Marowski')
+
 
 puts "Creating pets..."
-# generate 20 pets
-10.times do
-    Pet.create!(
-        name: Faker::Name.name,
-        species: ['cat','dog','monkey','lizard','snake','koala'].sample,
-        available: true,
-        age: [1,2,3].sample,
-        description: Faker::Lorem.sentence(word_count: 10),
-        price_per_day: [10,20,30].sample,
-        # location: Faker::Address.full_address,
-        location: addresses[c],
-        user_id: 1,
-    )
-    c += 1
-end
+cat1 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Cat',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[0],
+    user_id: User.all.sample.id,
+)
+cat1.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/cat1.jpg')), filename: 'cat1.jpg', content_type: 'image/jpg')
+
+cat2 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Cat',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[1],
+    user_id: User.all.sample.id,
+)
+cat2.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/cat2.jpg')), filename: 'cat2.jpg', content_type: 'image/jpg')
+
+cat3 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Cat',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[2],
+    user_id: User.all.sample.id,
+)
+cat3.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/cat3.jpg')
+    ), filename: 'cat3.jpg', content_type: 'image/jpg')
+
+cat4 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Cat',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[3],
+    user_id: User.all.sample.id,
+)
+cat4.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/cat4.jpg')), filename: 'cat4.jpg', content_type: 'image/jpg')
+
+dog = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Dog',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[4],
+    user_id: User.all.sample.id,
+)
+dog.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/dog.jpg')), filename: 'dog.jpg', content_type: 'image/jpg')
+
+dog1 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Dog',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[5],
+    user_id: User.all.sample.id,
+)
+dog1.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/dog1.jpg')), filename: 'dog1.jpg', content_type: 'image/jpg')
+
+dog3 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Dog',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[6],
+    user_id: User.all.sample.id,
+)
+dog3.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/dog3.jpg')), filename: 'dog3.jpg', content_type: 'image/jpg')
+
+dog4 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Dog',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[7],
+    user_id: User.all.sample.id,
+)
+dog4.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/dog4.jpg')), filename: 'dog4.jpg', content_type: 'image/jpg')
+
+snake = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Snake',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[8],
+    user_id: User.all.sample.id,
+)
+snake.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/snake.jpg')), filename: 'snake.jpg', content_type: 'image/jpg')
+
+hamster1 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Hamster',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[9],
+    user_id: User.all.sample.id,
+)
+hamster1.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/hamster1.jpg')), filename: 'hamster1.jpg', content_type: 'image/jpg')
+
+hamster2 = Pet.create!(
+    name: Faker::Name.first_name,
+    species: 'Hamster',
+    available: true,
+    age: rand(1..15),
+    description: Faker::Lorem.sentence(word_count: 10),
+    price_per_day: rand(5..50),
+    location: addresses[10],
+    user_id: User.all.sample.id,
+)
+hamster2.photo.attach(io: File.open(File.join(Rails.root, '/app/assets/images/hamster2.jpg')), filename: 'hamster2.jpg', content_type: 'image/jpg')
+
 puts "Finished!"

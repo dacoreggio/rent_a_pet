@@ -1,13 +1,10 @@
 <div class="container" style="padding-top: 16px;">
-  <!-- <h2 style="padding-top: 5px "> <%= @pet.name %> </h1> -->
   <div class="row">
     <div class="col-12 col-lg-6">
       <p><%= cl_image_tag @pet.photo.key, height: 300, width: 400, crop: :fill, style: "border-radius: 5px;" %></p>
       <br>
       <div class="show-card">
         <h5><i class="fas fa-dog fa-2x"></i> Hello there! I am <%= @pet.name %>, a <%=  @pet.age %> years old <%=  @pet.species %>. Right now I live at <%= @pet.location %>, and for <%=  @pet.price_per_day %> € a day, we can have some fun during this sad lock-down 😊.</h5>
-  <!--       <h5>Here you see a few more details about me.</h5>
-        <p><%=  @pet.description %></p> -->
         <br>
         <br>
       </div>
